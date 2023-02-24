@@ -1,5 +1,5 @@
 doctype html
-html.bg-gray-900[lang="en"]
+html.bg-gray-900[lang="es"]
   head
     title
       | ProjectInstagram
@@ -7,19 +7,15 @@ html.bg-gray-900[lang="en"]
     meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag "tailwind", media: "all", "data-turbolinks-track": "reload"
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   body.relative.bg-gray-200.h-full
     = render "shared/navbar"
-    .page-content.pt-6.h-full
-      .container.mx-auto.flex.h-full
-        .left.w-8/12.pr-4
-          = render "shared/stories"
-        = render "shared/feeds"
-        .right.w-4/12.h-screen.overflow-visible.h-full
-          .first.fixed.pl-4.w-full[style="top:85px;  max-width: 293px;"]
-            = render "shared/profile"
-            = render "shared/suggestions"
-    = render "shared/flashes"
-    = yield
+    = render "shared/feeds"
+  .page-content.pt-6.h-full
+    .container.mx-auto.flex.h-full
+      .left class="w-8/12 pr-4"
+    .right class="w-4/12 h-screen overflow visible h-full"
+        = yield
+        
