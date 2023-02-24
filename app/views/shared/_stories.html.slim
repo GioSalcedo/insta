@@ -1,5 +1,22 @@
-.stories.bg-white.p-5.rounded.border.border-gray-400.flex.mb-6
-  .storie-item.flex.flex-col.mr-6
-    .rounded-full.p-1.bg-gradient-to-r.from-purple-400.via-pink-500.to-red-500
-      .rounded-full.bg-white.wrapper.overflow-hidden.h-16.w-16
-        |  img<img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/20635165_1942203892713915_5464937638928580608_a.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com
+.page-content.pt-6.h-full
+  .container class="mx-auto flex h-full"
+    .left class="w-8/12 pr-4"
+      div class="stories bg-white p-5 rounded border border-gray-400 flex mb-6"
+            div class="storie-item flex flex-col mr-6"
+              div class="rounded-full p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+                div class="rounded-full bg-white wrapper overflow-hidden h-16 w-16"
+                  img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/20635165_1942203892713915_5464937638928580608_a.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_ohc=JK-0WwYKXBgAX-mFP6I&oh=e0d86b1c4be3cea94e341f18e17905b3&oe=5F94C764" class="-full h-full object-contain p-2" alt=""
+              div class="user-name text-center pt-1"
+                span class="text-gray-700 text-sm"
+                  | apple
+
+            div class="storie-item flex flex-col mr-6"
+              div class="rounded-full p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+                div class="rounded-full bg-white wrapper overflow-hidden h-16 w-16"
+                  img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/119515245_239175997499686_2853342285794408974_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_ohc=KDVS6kR76AYAX9tg6_K&oh=81ca965572b7c99626143aacdd38c3ce&oe=5F94DE5B" class="-full h-full object-contain p-2" alt=""
+
+              div class="user-name text-center pt-1"
+                span class="text-gray-700 text-sm"
+                  | google
+
+      = render "shared/feeds"
