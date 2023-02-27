@@ -36,13 +36,13 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get set_comment" do
-    get comments_set_comment_url
+  test "should get set_post" do
+    get comments_set_post_url
     assert_response :success
   end
 
-  test "should get comment_params" do
-    get comments_comment_params_url
+  test "should get post_params" do
+    get comments_post_params_url
     assert_response :success
   end
 end

@@ -1,2 +1,9 @@
-h1 Posts#index
-p Find me in app/views/posts/index.html.slim
+- @post.each do |post|
+    - post.images do |image|
+      = image_tag image.url
+    .post-author
+      = post.description
+    .post-edit
+      = link_to 'Edit', edit_post_path(post)
+    .post-delete
+      = link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }
