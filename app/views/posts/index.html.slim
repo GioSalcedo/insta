@@ -1,9 +1,20 @@
-- @post.each do |post|
-    - post.images do |image|
-      = image_tag image.url
-    .post-author
-      = post.description
-    .post-edit
-      = link_to 'Edit', edit_post_path(post)
-    .post-delete
-      = link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }
+/ app/views/posts/index.html.slim
+h1.text-2xl.font-bold.mb-4 Latest Posts
+
+- @posts.each do |post|
+  .bg-white.rounded-lg.shadow-md.p-4.mb-4
+    h2.text-xl.font-bold.mb-2 = link_to post.title, post
+    p.text-gray-600 = post.created_at.strftime('%B %d, %Y')
+    p.mt-2 = post.body
+    div.mt-4.flex.items-center
+      - if current_user && current_user.likes?(post)
+        = link_to post_like_path(post), method: :delete, class: "text-blue-600 hover:underline" do
+          i.far.fa-heart.mr-1
+          = pluralize(post.likes.count, "like")
+      - else
+        = link_to post_like_path(post), method: :post, class: "text-gray-600 hover:text-blue-600 hover:underline" do
+          i.far.fa-heart.mr-1
+          = pluralize(post.likes.count, "like")
+      = link_to post_path(post), class: "ml-4 text-gray-600 hover:text-blue-600 hover:underline" do
+        i.far.fa-comments.mr-1
+        = pluralize(post.comments.count, "comment")
