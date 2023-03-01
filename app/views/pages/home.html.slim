@@ -26,33 +26,43 @@
 						path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
 				
 				div class="profile-icon"
-					img alt="u__graphics's profile picture" width="22px" height="22px" class="_6q-tv" data-testid="user-avatar" draggable="false" src="https://instagram.fcrk1-1.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fcrk1-1.fna.fbcdn.net&amp;_nc_ohc=RLYRR3IenIMAX-3KydC&amp;oh=23629c61452b7e40fcc30b2658f4a74a&amp;oe=5F96310F&amp;ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2"
+				- if user_signed_in?
+					= link_to "Mi perfil", edit_user_registration_path, class: "profile-icon"
+
+
+			div class="right w-4/12 pl-4"
+				- if current_user
+					= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary"
+				- else
+					= link_to "Log in", login_path, class: "btn btn-outline-primary"
+					= link_to "Sign up", signup_path, class: "btn btn-primary ml-2"
+				
 
 	div class="page-content pt-6 h-full"
 		div class="container mx-auto flex h-full"
 			div class="left w-8/12 pr-4"
-				div class="stories bg-white p-5 rounded border border-gray-400 flex mb-6"
-					div class="storie-item flex flex-col mr-6"
-						div class="rounded-full p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
-							div class="rounded-full bg-white wrapper overflow-hidden h-16 w-16"
-								img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/20635165_1942203892713915_5464937638928580608_a.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_ohc=JK-0WwYKXBgAX-mFP6I&oh=e0d86b1c4be3cea94e341f18e17905b3&oe=5F94C764" class="-full h-full object-contain p-2" alt=""
+				/ div class="stories bg-white p-5 rounded border border-gray-400 flex mb-6"
+				/ 	div class="storie-item flex flex-col mr-6"
+				/ 		div class="rounded-full p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+				/ 			div class="rounded-full bg-white wrapper overflow-hidden h-16 w-16"
+				/ 				img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/20635165_1942203892713915_5464937638928580608_a.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_ohc=JK-0WwYKXBgAX-mFP6I&oh=e0d86b1c4be3cea94e341f18e17905b3&oe=5F94C764" class="-full h-full object-contain p-2" alt=""
 							
 						
-						div class="user-name text-center pt-1"
-							span class="text-gray-700 text-sm"
-								apple
+				/ 		div class="user-name text-center pt-1"
+				/ 			span class="text-gray-700 text-sm"
+				/ 				apple
 							
 						
 					
-					div class="storie-item flex flex-col mr-6"
-						div class="rounded-full p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
-							div class="rounded-full bg-white wrapper overflow-hidden h-16 w-16"
-								img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/119515245_239175997499686_2853342285794408974_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_ohc=KDVS6kR76AYAX9tg6_K&oh=81ca965572b7c99626143aacdd38c3ce&oe=5F94DE5B" class="-full h-full object-contain p-2" alt=""
+				/ 	div class="storie-item flex flex-col mr-6"
+				/ 		div class="rounded-full p-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+				/ 			div class="rounded-full bg-white wrapper overflow-hidden h-16 w-16"
+				/ 				img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/119515245_239175997499686_2853342285794408974_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_ohc=KDVS6kR76AYAX9tg6_K&oh=81ca965572b7c99626143aacdd38c3ce&oe=5F94DE5B" class="-full h-full object-contain p-2" alt=""
 							
 						
-						div class="user-name text-center pt-1"
-							span class="text-gray-700 text-sm"
-								google
+				/ 		div class="user-name text-center pt-1"
+				/ 			span class="text-gray-700 text-sm"
+				/ 				google
 							
 						
 					
@@ -125,63 +135,63 @@
 										input type="text" class="text-sm h-10 w-full outline-none focus:outline-none w-10/12" placeholder="Add a comment"
 										button class="text-blue-500 opacity-75 w-2/12 text-right font-bold" post
 					
-            div class="right w-4/12 h-screen overflow-visible h-full"
-				div class="first fixed pl-4 w-full" style="top:85px;  max-width: 293px;"
-					div class="profile flex items-center p-3 mb-4"
-						div class="avatar rounded-full overflow-hidden mr-3"
-							img width="56px" height="56px" src="https://scontent-ort2-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com&_nc_ohc=RLYRR3IenIMAX_WuH3u&oh=f63257aee4bcbf147d7a26c7da5b3467&oe=5F96310F" alt=""
+            / div class="right w-4/12 h-screen overflow-visible h-full"
+			/ 	div class="first fixed pl-4 w-full" style="top:85px;  max-width: 293px;"
+			/ 		div class="profile flex items-center p-3 mb-4"
+			/ 			div class="avatar rounded-full overflow-hidden mr-3"
+			/ 				img width="56px" height="56px" src="https://scontent-ort2-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-ort2-1.cdninstagram.com&_nc_ohc=RLYRR3IenIMAX_WuH3u&oh=f63257aee4bcbf147d7a26c7da5b3467&oe=5F96310F" alt=""
 						
-						div class="user-name"
-							span class="text-lg font-semibold text-gray-700" u__graphics
-							span class="text-sm text-gray-600  block" Ugraphics
+			/ 			div class="user-name"
+			/ 				span class="text-lg font-semibold text-gray-700" u__graphics
+			/ 				span class="text-sm text-gray-600  block" Ugraphics
 						
 					
-					div class="suggestion-users"
-						div class="title flex w-full justify-between text-sm"
-							div class="left"
-								h1 class="font-bold" Suggestions For You
+			/ 		div class="suggestion-users"
+			/ 			div class="title flex w-full justify-between text-sm"
+			/ 				div class="left"
+			/ 					h1 class="font-bold" Suggestions For You
 							
-							div class="right"
-								span See All
+			/ 				div class="right"
+			/ 					span See All
 							
 						
 
-						div class="users-wrapper mt-4 flex w-full justify-between items-center"
-							div class="user-item flex flex-row pl-2"
-								div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4"
-									img alt="realdonaldtrump's profile picture" class="" src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/23823676_515039535523575_7479748231031685120_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;_nc_ohc=zLTqJ5i4bawAX9aEwSk&amp;oh=3bd3cf886021fc3ad74a9258163f319b&amp;oe=5F93487B"
+			/ 			div class="users-wrapper mt-4 flex w-full justify-between items-center"
+			/ 				div class="user-item flex flex-row pl-2"
+			/ 					div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4"
+			/ 						img alt="realdonaldtrump's profile picture" class="" src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/23823676_515039535523575_7479748231031685120_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;_nc_ohc=zLTqJ5i4bawAX9aEwSk&amp;oh=3bd3cf886021fc3ad74a9258163f319b&amp;oe=5F93487B"
 								
-								div class="user-name flex flex-col "
-									span class="text-sm font-semibold" realdonaldtrump
-									span class="text-xs -mt-1 text-gray-700" populer
+			/ 					div class="user-name flex flex-col "
+			/ 						span class="text-sm font-semibold" realdonaldtrump
+			/ 						span class="text-xs -mt-1 text-gray-700" populer
 								
 							
-							a href="" class="follow text-blue-600 text-sm font-semibold" follow
+			/ 				a href="" class="follow text-blue-600 text-sm font-semibold" follow
 						
 
-						div class="users-wrapper mt-4 flex w-full justify-between items-center"
-							div class="user-item flex flex-row pl-2"
-								div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4"
-									img alt="shinzoabe's profile picture" class="_6q-tv" data-testid="user-avatar" draggable="false" src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/28765771_2034399086813186_5509661386784899072_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;_nc_ohc=qheOj6mJM98AX83my9F&amp;oh=8a8985205ad5a19ae0905a3c3a77906b&amp;oe=5F93F87C"
+			/ 			div class="users-wrapper mt-4 flex w-full justify-between items-center"
+			/ 				div class="user-item flex flex-row pl-2"
+			/ 					div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4"
+			/ 						img alt="shinzoabe's profile picture" class="_6q-tv" data-testid="user-avatar" draggable="false" src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/28765771_2034399086813186_5509661386784899072_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;_nc_ohc=qheOj6mJM98AX83my9F&amp;oh=8a8985205ad5a19ae0905a3c3a77906b&amp;oe=5F93F87C"
 								
-								div class="user-name flex flex-col "
-									span class="text-sm font-semibold" shinzoabe
-									span class="text-xs -mt-1 text-gray-700" populer
+			/ 					div class="user-name flex flex-col "
+			/ 						span class="text-sm font-semibold" shinzoabe
+			/ 						span class="text-xs -mt-1 text-gray-700" populer
 								
 							
-							a href="" class="follow text-blue-600 text-sm font-semibold" follow
+			/ 				a href="" class="follow text-blue-600 text-sm font-semibold" follow
 						
-						div class="users-wrapper mt-4 flex w-full justify-between items-center"
-							div class="user-item flex flex-row pl-2"
-								div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4"
-									img alt="nike's profile picture" class="_6q-tv" data-testid="user-avatar" draggable="false" src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/26155970_1584552474997482_4541081815552622592_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;_nc_ohc=f5mhOmP7WT0AX9kw3Eh&amp;oh=fd2a3ba71bee8608cda04d04196746b8&amp;oe=5F94C3CE"
+			/ 			div class="users-wrapper mt-4 flex w-full justify-between items-center"
+			/ 				div class="user-item flex flex-row pl-2"
+			/ 					div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4"
+			/ 						img alt="nike's profile picture" class="_6q-tv" data-testid="user-avatar" draggable="false" src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-19/s150x150/26155970_1584552474997482_4541081815552622592_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;_nc_ohc=f5mhOmP7WT0AX9kw3Eh&amp;oh=fd2a3ba71bee8608cda04d04196746b8&amp;oe=5F94C3CE"
 								
-								div class="user-name flex flex-col "
-									span class="text-sm font-semibold" nike
-									span class="text-xs -mt-1 text-gray-700" populer
+			/ 					div class="user-name flex flex-col "
+			/ 						span class="text-sm font-semibold" nike
+			/ 						span class="text-xs -mt-1 text-gray-700" populer
 								
 							
-							a href="" class="follow text-blue-600 text-sm font-semibold" follow
+			/ 				a href="" class="follow text-blue-600 text-sm font-semibold" follow
 						
 
 					

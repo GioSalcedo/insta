@@ -1,0 +1,9 @@
+= form_for @post do |f|
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :images
+    = f.file_field :images, multiple: true
+  .actions
+    = f.submit

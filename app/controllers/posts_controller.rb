@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = params[:user_id]
     if @post.save
-      redirect_to user_post_path(@post.user_id, @post.id)
+      redirect_to home_path
     else
       render :new
     end
