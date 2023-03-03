@@ -1,0 +1,5 @@
+div class="bottom border-t pt-1 mt-1" id="comments_list" data-turbo-frame="comments"
+  .caption.text-sm.mt-3
+    - post.comments.each do |comment|
+      b class="px-2" = post.user.username 
+      p class="px-2" = comment.content

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  
   def index
     @comment = Comment.where(post_id: params[:post_id])
   end
@@ -13,14 +13,20 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.post_id = params[:post_id]
-    if @comment.save
-      redirect_to post_comment_path(@comment.post_id, @comment.id)
-    else
-      render :new
+    @comment.user_id = current_user.id
+  
+    respond_to do |format|
+      if @comment.save
+        format.turbo_stream
+        format.html { turbo_stream.append 'comments_list', partial: 'comments/comment', locals: { comment: @comment } }
+        format.json { render :show, status: :created, location: @comment }
+      else
+        format.html { render :new }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
-  end
-
+  end  
+  
   def edit; end
 
   def update
@@ -38,11 +44,11 @@ class CommentsController < ApplicationController
 
   private 
 
-  def set_post
+  def set_comment
     @comment = Comment.find(params[:id])
   end
 
-  def post_params
-    params.require(:comment).permit(:content)
+  def comment_params
+    params.require(:comment).permit(:content, :post_id, :user_id)
   end
 end

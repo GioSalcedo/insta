@@ -1,0 +1,7 @@
+= form_with(model: [@post, Comment.new], local: true, remote: true) do |form|
+  = form.hidden_field :post_id, value: post.id
+  .field
+    = form.label :content
+    = form.text_area :content
+  .actions
+    = form.submit
