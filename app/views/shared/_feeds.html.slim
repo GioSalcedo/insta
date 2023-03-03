@@ -1,6 +1,9 @@
 div class="feeds"
   - @posts.each do |post|
-	div class="feed-wrapper mb-4"
+		div class="page-content pt-6 h-full"
+		div class="container mx-auto flex h-full"
+			div class="left w-8/12 pr-4"
+				div class="feed-wrapper mb-4"
 						div class="feed-item border border-gray-400 rounded bg-white"
 							div class="header border-b p-4 flex justify-between items-center"
 								div class="left flex flex-row items-center"
@@ -8,7 +11,7 @@ div class="feeds"
 									  = image_tag post.user.avatar, class: "rounded-full w-10 h-10"
 									div class="user-name-and-place flex flex-col ml-2"
 										span class="text-sm font-bold" = post.user.username
-										span class="text-xs font-light text-gray-900" Chiapas, Mexico
+										span class="text-xs font-light text-gray-900" = post.user.location
 									
 								
 								div class="right"
@@ -18,7 +21,7 @@ div class="feeds"
 										circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"
 
 					        div class="feed-img"
-								    img class="w-full center" src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" alt=""
+								    = image_tag post.image, class: "w-full"
 							
 							div class="card-footer p-4"
 								div class="top"
@@ -49,12 +52,12 @@ div class="feeds"
 										
 									
 									div class="caption text-sm mt-3"
-										b apple
-										|  new Iphone release ✨
+										b = post.user.username
+										p = post.description
 									
 									div class="post-date mt-1"
 										span class="text-xs text-gray-900"
-											1 minute ago
+										|	1 minute ago
 										
 								div class="bottom border-t pt-3 mt-3"
 									div class="wrapper flex"

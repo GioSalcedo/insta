@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location, autofocus: true, autocomplete: "location" %>
+  </div>
+  
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
