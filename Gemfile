@@ -50,6 +50,7 @@ gem 'tailwindcss-rails'
 # Use Sass to process CSS
 gem "sassc-rails"
 gem "slim-rails", "~> 3.6"
+gem 'stimulus_reflex'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
