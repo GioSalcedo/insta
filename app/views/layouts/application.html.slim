@@ -10,11 +10,11 @@ html.bg-gray-900[lang="es"]
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = javascript_tag "tailwind", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-    = turbo_include_tags
 
   body.relative.bg-gray-200.h-full
     = render 'shared/navbar'
+    .container.mx-auto
+      = link_to "Nuevo Post", new_post_path, class: "btn btn-primary"
     - if @posts.present?
       = render 'shared/feeds'
     = yield

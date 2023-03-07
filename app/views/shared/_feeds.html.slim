@@ -8,7 +8,12 @@ div class="feeds"
 							div class="header border-b p-4 flex justify-between items-center"
 								div class="left flex flex-row items-center"
 									div class="avatar"
-									  = image_tag post.user.avatar, class: "rounded-full w-10 h-10"
+									  - if user_signed_in?
+										= link_to my_profile_path do 
+											- if current_user.avatar.attached?
+												= image_tag current_user.avatar, class: "rounded-full w-8 h-8 mr-2 center"
+											- else
+												= image_tag "https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg", class: "rounded-full w-8 h-8 mr-2 center"
 									div class="user-name-and-place flex flex-col ml-2"
 										span class="text-sm font-bold" = post.user.username
 										span class="text-xs font-light text-gray-900" = post.user.location
@@ -67,3 +72,6 @@ div class="feeds"
 											= render partial: "comments/comment", collection: post.comments
 										div class="wrapper flex mt-2"
 											= render "comments/form", post: post
+
+								div class="left"
+									= link_to "Nuevo Post", new_post_path, class: "btn btn-primary"

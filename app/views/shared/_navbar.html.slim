@@ -32,9 +32,10 @@ nav class="border-b py-3 sticky top-0 bg-white z-50"
 				- if user_signed_in?
 					= link_to my_profile_path do 
 						- if current_user.avatar.attached?
+							b = current_user.username
 							= image_tag current_user.avatar, class: "rounded-full w-8 h-8 mr-2 center"
 						- else
 							= image_tag "https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg", class: "rounded-full w-8 h-8 mr-2 center"
-					= button_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "profile-icon"
+						= button_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "profile-icon"
 				- else
 					= link_to "Iniciar Sesion", new_user_session_path, class: "profile-icon"

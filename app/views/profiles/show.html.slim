@@ -1,19 +1,18 @@
 div class="mx-auto max-w-screen-lg flex items-center justify-center flex-col space-y-6"
   div class="relative w-32 h-32 rounded-full overflow-hidden"
-    img src="https://source.unsplash.com/random/400x400" alt="Profile picture" class="w-full h-full object-cover object-center"
-    div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-      svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24"
-        path d="M5.64 5.64A8 8 0 0 1 11 3v2a6 6 0 0 0-1.5.5A6 6 0 0 0 5 9H3a8 8 0 0 1 2.64-3.36zM12 3v2a6 6 0 0 0-4.5 10.34 8 8 0 0 1 9-9A6 6 0 0 0 12 3zM3 13a6 6 0 0 0 7.5 5.82A8 8 0 0 1 13 17v2a6 6 0 0 0-6-6H3z"
+	- if current_user.avatar.attached?
+      = image_tag current_user.avatar, class: "w-full h-full object-cover"
+    - else
+      = image_tag "https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg", class: "w-full h-full object-cover"
 
-    
-  
   div class="flex items-center space-x-4"
     h2 class="text-xl font-bold" = current_user.username
-    button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
-      Follow
+    = link_to "Editar mi perfil", edit_user_registration_path , class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full focus:outline-none focus:shadow-outline"
+    
 
   
   p class="text-sm text-gray-500" = current_user.bio
+  p class="text-sm text-gray-500" = current_user.location
   div class="flex space-x-4"
     div
       h3 class="font-bold"
