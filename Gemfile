@@ -78,3 +78,6 @@ group :test do
   gem "webdrivers"
 end
 
+
+gem "redis", "~> 5.0"
+gem "cable_ready", "~> 4.5"
