@@ -4,7 +4,8 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.2.5",
-    "stimulus_reflex": "^3.6.1",
+    "cable_ready": "^5.0.0-pre10",
+    "stimulus_reflex": "^3.5.0-pre10",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
