@@ -57,11 +57,13 @@ div class="feeds"
 									
 									div class="post-date mt-1"
 										span class="text-xs text-gray-900"
-										|	1 minute ago
+										p creado a las
+										span = post.created_at.strftime("%d/%m/%Y %H:%M")
 									
 									div class="bottom border-t pt-1 mt-1"
-										div class="caption text-sm mt-3" id="comments" data-turbo-frame="comments"
-										div data-turbo-frame="comments"
-											= render "comments/comment", post: post
+										div class="caption text-sm mt-3"
+											div id="comment" class="comments mt-2"
+											div class="bottom border-t pt-1 mt-1" id="comment"
+											= render partial: "comments/comment", collection: post.comments
 										div class="wrapper flex mt-2"
 											= render "comments/form", post: post

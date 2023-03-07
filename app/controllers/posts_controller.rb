@@ -3,13 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @post = Post.where(user_id: params[:user_id])
-  end
-
-  def show; end
-
-  def new
-    @post = Post.new
+    @post = Post.all.order("created_at DESC")
   end
 
   def create

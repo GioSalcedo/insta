@@ -51,6 +51,8 @@ gem 'tailwindcss-rails'
 gem "sassc-rails"
 gem "slim-rails", "~> 3.6"
 gem 'stimulus_reflex'
+gem "redis", "~> 5.0"
+gem "cable_ready", "~> 4.5"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -79,5 +81,3 @@ group :test do
 end
 
 
-gem "redis", "~> 5.0"
-gem "cable_ready", "~> 4.5"

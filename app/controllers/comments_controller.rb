@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  include CableReady::Broadcaster
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -14,18 +15,17 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-  
-    respond_to do |format|
-      if @comment.save
-        format.turbo_stream
-        format.html { turbo_stream.append 'comments_list', partial: 'comments/comment', locals: { comment: @comment } }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      cable_ready["comments"].insert_adjacent_html(
+        selector: "#comments",
+        position: "beforeend",
+        html: render_to_string(partial: "comments/comment", locals: { comment: @comment })
+      )
+      cable_ready.broadcast
+    else
+      render :new
     end
-  end  
+  end
   
   def edit; end
 
