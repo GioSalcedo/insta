@@ -10,18 +10,22 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    @comment.post_id = params[:post_id]
   end
 
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    @comment.post_id = @post.id
+
     if @comment.save
-      cable_ready["comments"].insert_adjacent_html(
-        selector: "#comments",
+      cable_ready["timeline"].insert_adjacent_html(
+        selector: "#timeline",
         position: "beforeend",
         html: render_to_string(partial: "comments/comment", locals: { comment: @comment })
       )
       cable_ready.broadcast
+      redirect_to post_comment_path(@comment.post_id, @comment.id)
     else
       render :new
     end

@@ -7,14 +7,10 @@ html.bg-gray-900[lang="es"]
     meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
-    = javascript_tag "tailwind", "data-turbo-track": "reload"
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
 
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag 'application' , "data-turbo-track": "reload"
+
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
   body.relative.bg-gray-200.h-full
-    = render 'shared/navbar'
-    .container.mx-auto
-      = link_to "Nuevo Post", new_post_path, class: "btn btn-primary"
-    - if @posts.present?
-      = render 'shared/feeds'
     = yield

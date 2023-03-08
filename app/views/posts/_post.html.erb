@@ -1,0 +1,142 @@
+<div class="feeds">
+  <div class="feed-wrapper mb-4">
+    <div class="feed-item border border-gray-400 rounded bg-white">
+      <div class="header border-b p-4 flex justify-between items-center">
+        <!--<div class="left flex flex-row items-center">
+          <div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4">
+            <%# if post.profile.avatar.attached? %>
+              <%#= image_tag  post.profile.avatar, width: "100px" %>
+            <%#end %>
+          </div>
+          <div class="user-name-and-place flex flex-col">
+            <%#=link_to post.profile.user_name, controller: 'profile', action:'show', id: post.profile.id, class:"text-sm font-bold"%>
+            <span class="text-xs font-light text-gray-900">Bogota, Colombia</span>
+          </div>
+        </div>-->
+      </div>
+      <!--<div class="feed-img">
+        <%#= image_tag post.avatar, width: "610px"  %>
+      </div>-->
+      <div  class="card-footer p-4" >
+        <div class="top" >
+          <div class="icons flex flex-row justify-between items-center">
+            <div class="left flex flex-row">
+
+              <!--<div class="like mr-4">
+                <%#if post.like?(current_user.id) %>
+                  <a href="#"
+                     data-reflex="click->Likes#decrement_like"
+                     data-step=<%="#{post.id},#{current_user.id}"%>
+                  >
+                    <i class="fa-solid fa-heart"></i>
+                  </a>
+                <%# else %>
+                  <a href="#"
+                     data-reflex="click->Likes#increment_like"
+                     data-step=<%="#{post.id},#{current_user.id}"%>
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </a>
+                <%# end %>
+              </div>-->
+
+            </div>
+            <!--<div class="right">
+              <div class="save">
+                <%# if current_user.profile.follower?( post.profile) && current_user.profile!= post.profile %>
+                  <a href="#"
+                     data-reflex="click->Followers#delete"
+                     data-step=<#%="#{current_user.profile.id},#{post.profile.id}"%> >
+                    <span class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">Dejar de seguir</span>
+                  </a>
+                <%#elsif current_user.profile!= post.profile %>
+                  <a href="#"
+                     data-reflex="click->Followers#follow"
+                     data-step=<%#="#{current_user.profile.id},#{post.profile.id}"%> >
+                    <span class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">Seguir</span>
+                  </a>
+                <%#end%>
+              </div>
+            </div>-->
+          </div>
+          <div  class="likes mt-1">
+            <span class="text-base font-semibold text-gray-700 mr-2">
+              <b> <a href="#miModal<%=post.id%>"><%=post.likes.count %> Me gusta</a> </b>
+              <!--<div id="miModal<%=post.id%>" class="modal miModal3" >
+                <div class="modal-contenido bg-gray-100">
+                  <a href="#p<%=post.id%>"><i class="fa-solid fa-xmark"></i></a>
+                  <span class="text-base text-gray-700 text-2xl mr-2">Le gusta a:</span>
+                  <%#= render partial: "profile/profile", collection: post.profile_likes %>
+                </div>-->
+              </div>
+            </span>
+          </div>
+          <!--<div class="caption text-sm mt-2">
+            <b><%#=post.profile.user_name %></b>
+            <%#=post.description %>
+          </div>-->
+          <div class="mt-3" >
+            <span class="text-base font-semibold text-gray-700 mr-2" >
+              <b> <a href="#c<%=post.id%>" style="color: #8e8e8e"><%=post.comments.count %> comentarios</a> </b>
+              <div id="c<%=post.id%>" class="modal miModal3">
+                <div class="modal-contenido bg-gray-100">
+                  <a href="#p<%=post.id%>"><i class="fa-solid fa-xmark"></i></a>
+                  <span class="text-base text-gray-700 text-2xl mr-2">Comentarios</span>
+                  <% post.comments.each do |comment| %>
+                    <!--<div class="caption text-sm">
+                      <%#=link_to comment.profile.user_name, controller: 'profile', action:'show', id: comment.profile.id, class: "text-sm font-semibold"%>
+                      <%#=comment.text %>
+                      <%#if current_user.id == comment.profile.user.id %>
+                        <a href="#"
+                          data-reflex="click->Comments#delete"
+                          data-step=<%#= comment.id%> >
+                          <i class="fa-regular fa-trash-can"></i>
+                        </a>
+                      <% #end %>
+                      <br>
+                    </div>-->
+                  <% end %>
+                </div>
+              </div>
+            </span>
+          </div>
+          <% post.comments.last(2).each do |comment| %>
+            <div class="caption text-sm">
+              <b><%=comment.user.username%></b>
+              <%=comment.content %>
+              <%if current_user.id == comment.user.id %>
+                <a href="#"
+                   data-reflex="click->Comments#delete"
+                   data-step=<%= comment.id%> >
+                  <i class="fa-regular fa-trash-can"></i>
+                </a>
+              <% end %>
+            </div>
+          <% end %>
+
+          <!--<div class="post-date mt-1">
+            <span class="text-xs text-gray-900">
+              Publicado el <%#=post.date_created%>
+            </span>
+          </div>-->
+        </div>
+        <div class="bottom border-t pt-3 mt-3", data-reflex-root="c<%=post.id%>">
+          <%= form_tag   do %>
+            <div class="wrapper flex">
+              <div>
+                <%=  hidden_field(:pts, :pts_id, :value => post.id)  %>
+              </div>
+              <div>
+                <%=  hidden_field(:user, :user_id, :value => current_user.id)  %>
+              </div>
+              <div commentario>
+                <%= text_field_tag :text, nil, placeholder: "Agregar un comentario...", class: "placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" %>
+              </div>
+              <%= link_to "Publicar", "#", data: { reflex: "click->CommentsReflex#submit" }, class: "text-blue-500 opacity-75 w-6/12 pt-2 text-right font-bold"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

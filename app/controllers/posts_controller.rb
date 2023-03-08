@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @post = Post.all.order("created_at DESC")
+    @posts = Post.all.order("created_at DESC")
   end
 
   def new
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    
     if @post.save
       redirect_to root_path
     else
