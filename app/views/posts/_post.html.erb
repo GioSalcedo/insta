@@ -2,21 +2,21 @@
   <div class="feed-wrapper mb-4">
     <div class="feed-item border border-gray-400 rounded bg-white">
       <div class="header border-b p-4 flex justify-between items-center">
-        <!--<div class="left flex flex-row items-center">
+        <div class="left flex flex-row items-center">
           <div class="user-img h-10 w-10 border rounded-full overflow-hidden mr-4">
-            <%# if post.profile.avatar.attached? %>
-              <%#= image_tag  post.profile.avatar, width: "100px" %>
-            <%#end %>
+            <% if post.user.avatar.attached? %>
+              <%= image_tag  post.user.avatar, width: "100px" %>
+            <%end %>
           </div>
           <div class="user-name-and-place flex flex-col">
-            <%#=link_to post.profile.user_name, controller: 'profile', action:'show', id: post.profile.id, class:"text-sm font-bold"%>
+            <%=link_to post.user.username, my_profile_path , class:"text-sm font-bold"%>
             <span class="text-xs font-light text-gray-900">Bogota, Colombia</span>
           </div>
-        </div>-->
+        </div>
       </div>
-      <!--<div class="feed-img">
-        <%#= image_tag post.avatar, width: "610px"  %>
-      </div>-->
+      <div class="feed-img">
+        <%= image_tag post.image, width: "610px"  %>
+      </div>
       <div  class="card-footer p-4" >
         <div class="top" >
           <div class="icons flex flex-row justify-between items-center">
@@ -33,7 +33,7 @@
                 <%# else %>
                   <a href="#"
                      data-reflex="click->Likes#increment_like"
-                     data-step=<%="#{post.id},#{current_user.id}"%>
+                     data-step=<%#="#{post.id},#{current_user.id}"%>
                   >
                     <i class="fa-regular fa-heart"></i>
                   </a>
